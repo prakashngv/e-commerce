@@ -8,10 +8,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;;
 
 @Entity
 public class Product {
+	@NotEmpty(message="Product Name Should Not Be Empty")
 	private String ProductName;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
