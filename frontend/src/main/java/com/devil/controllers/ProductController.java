@@ -106,26 +106,28 @@ public class ProductController {
 		model.addAttribute("categories",categories);
 		return "updateproductform";
 }
-    @RequestMapping(value="/admin/updateproduct")
-	public String updateProduct(@ModelAttribute @Valid Product product,BindingResult result,Model model,HttpServletRequest request){
-		System.out.println("AFTER FORM SUBMIT" + product.getId());
-		productDao.saveOrUpdate(product);
-Path path=Paths.get(request.getServletContext().getRealPath("/")+ "/WEB-INF/resources/images/"+product.getId()+".png");
-		
-		MultipartFile img=product.getImage();
-		if(img!=null && !img.isEmpty()){
-			File file=new File(path.toString());
-			try {
-				img.transferTo(file);
-			} catch (IllegalStateException e) {
-			
-				e.printStackTrace();
-			} catch (IOException e) {
-				
-				e.printStackTrace();
-			}
-		}
-		
+    @RequestMapping (value="/admin/updateproduct")
+    public String updateproduct(@ModelAttribute @Valid Product product,BindingResult result, Model model,HttpServletRequest request) {
+    	if(result.hasErrors()) {
+    		model.addAttribute("categories",productDao.getAllCategories());
+    		return "updateproductform";
+    	}
+    	System.out.println(request.getServletContext().getRealPath("/"));
+    	Path path=Paths.get(request.getServletContext().getRealPath("/")+"/WEB-INF/resources/images/"+product.getId()+".png");
+    	MultipartFile img=product.getImage();
+    	if(img!=null&&!img.isEmpty()) {
+    		File file=new File(path.toString());
+    		try {
+    			img.transferTo(file);
+    		} catch (IllegalStateException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		} catch (IOException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
+    	}
+    	productDao.saveOrUpdate(product);
 		return "redirect:/all/getallproducts";
     }
 }

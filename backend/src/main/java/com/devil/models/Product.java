@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 
@@ -21,9 +21,10 @@ public class Product {
 	@Min(value=1, message="Price Must be Greater than 1")
 	private double Price;
 	@Min(value=0, message="Quantity must be Positive")
-	private int quantity;
+	private int Quantity;
+	@NotEmpty(message="Description Needed")
 	private String Description;
-	@OneToOne
+	@ManyToOne
 	private Category category;
 	@Transient
 	private MultipartFile image;
@@ -58,10 +59,10 @@ public class Product {
 		Price = price;
 	}
 	public int getQuantity() {
-		return quantity;
+		return Quantity;
 	}
 	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+		Quantity = quantity;
 	}
 	public String getDescription() {
 		return Description;

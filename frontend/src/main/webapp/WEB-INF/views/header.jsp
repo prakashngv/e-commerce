@@ -41,7 +41,7 @@
 			<li><a href="<c:url value='/all/getallproducts/category=books'></c:url>">Books</a></li>
 			</ul>
 			</li>
-<li><a href="<c:url value='/signup'></c:url>">Sign Up</a></li>
+<li><a href="<c:url value='/all/getregistrationform'></c:url>">Sign Up</a></li>
 <li><a href="<c:url value='/signin'></c:url>"><span class="glyphicon glyphicon-log-in"></span>Sign In</a></li>
 <li><a href="<c:url value='/aboutus'></c:url>">About Us</a></li>
 </ul>
