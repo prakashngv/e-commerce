@@ -17,13 +17,20 @@ public class CustomerDaoImpl implements CustomerDao {
 private SessionFactory sessionFactory;
 	public void registerCustomer(Customer customer) {
 		Session session=sessionFactory.getCurrentSession();
-		//Authorities and User object
-		//authorities.user to refer user object
 		Authorities authorities=customer.getUser().getAuthorities();
 		User user=customer.getUser();
 		authorities.setUser(user);
 		session.save(customer);
 
+	}
+	public boolean isEmailUnique(String email) {
+		Session session=sessionFactory.getCurrentSession();
+		User user=(User)session.get(User.class, email);
+		if(user==null)
+			return true;
+		else 
+			return false;
+		
 	}
 
 }

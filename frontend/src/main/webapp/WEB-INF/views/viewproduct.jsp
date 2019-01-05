@@ -16,7 +16,13 @@
 <b>Description   :</b>${productAttr.description }
 <b>Price         :</b>${productAttr.price }
 <b>In Stock      :</b>${productAttr.quantity}
-<button class="btn btn-lg btn-info">Add To Cart</button> 
+<security:authorize access="hasRole('ROLE_USER')">
+<form action="<c:url value='/cart/addtocart/${ productAttr.id}'></c:url>" >
+Enter required units<br>
+<input type="number" name="requestedQuantity" min="1">
+<input type="submit" class="btn btn-lg btn-info" value="Add To Cart">
+</form> 
+</security:authorize>
 </pre>
 <a href="<c:url value='/all/getallproducts'></c:url>">Previous Page</a></div>
 </body>

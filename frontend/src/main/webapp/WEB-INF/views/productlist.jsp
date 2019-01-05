@@ -42,8 +42,10 @@ p=product object from the list
         <td>${p.quantity }</td>
         <td>
        <a href="<c:url value='/all/getproduct?id=${p.id }'></c:url>"><span class="glyphicon glyphicon-info-sign"></span></a>
+       <security:authorize access="hasRole('ROLE_ADMIN')">
         <a href="<c:url value='/admin/deleteproduct/${p.id }'></c:url>"><span class="glyphicon glyphicon-trash"></span></a>
         <a href="<c:url value='/admin/getupdateform?id=${p.id }'></c:url>"><span class="glyphicon glyphicon-pencil"></span></a>
+        </security:authorize>
         </td>
         </tr>
 		</c:forEach>
