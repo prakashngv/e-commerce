@@ -19,7 +19,7 @@
 <security:authorize access="hasRole('ROLE_USER')">
 <form action="<c:url value='/cart/addtocart/${ productAttr.id}'></c:url>" >
 Enter required units<br>
-<input type="number" name="requestedQuantity" min="1">
+<input type="number" name="requestedQuantity" min="1" max="${productAttr.quantity }">
 <input type="submit" class="btn btn-lg btn-info" value="Add To Cart">
 </form> 
 </security:authorize>

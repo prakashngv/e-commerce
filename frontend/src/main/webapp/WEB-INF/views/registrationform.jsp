@@ -103,7 +103,7 @@ LOGIN CREDENTIALS
 <form:input path="user.password" type="password" id="user.password"/></td>
 </tr>
 <tr><td>
-<form:hidden path="user.enabled" value="true"/></td>
+<form:hidden path="user.enabled" value="false"/></td>
 <td><form:hidden path="user.authorities.role" value="ROLE_USER"></form:hidden></td>
 </tr>
 </table>

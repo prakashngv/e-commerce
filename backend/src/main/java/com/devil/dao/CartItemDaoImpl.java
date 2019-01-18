@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.devil.models.CartItem;
+import com.devil.models.CustomerOrder;
 import com.devil.models.User;
 
 @Repository("cartItemDao")
@@ -55,5 +56,9 @@ public List<CartItem> getCartItems(String email) {
 		 cartItem.setTotalPrice(requestedQuantity*cartItem.getProduct().getPrice());
 	
 	}
-
+	public CustomerOrder createCustomerOrder(CustomerOrder customerOrder) {
+		Session session=sessionFactory.getCurrentSession();
+		session.save(customerOrder);
+		return customerOrder;
+	}
 }

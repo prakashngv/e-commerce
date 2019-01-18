@@ -31,7 +31,7 @@
 			<form action="<c:url value='/cart/updatecartitem'></c:url>">
              <tr>
              <td><input type="hidden" name="cartItemId" value="${cartItem.cartItemId }"></td>
-             <td><img src="<c:url value='/resources/images/${cartItem.product.id }.png'></c:url>" height="40px" width="40px" alt="No Image"></td>
+            <td><img src="<c:url value='/resources/images/${cartItem.product.id }.png'></c:url>" height="40px" width="40px" alt="No Image"></td>
              <td>${cartItem.product.productName }</td>
              <td><input type="number" name="requestedQuantity" value='${cartItem.quantity }' onchange="this.form.submit()" min="1"></td>
              <td>${cartItem.product.price }</td>
@@ -46,7 +46,7 @@
 				<c:if test="${empty(cartItems) }"><h3>Cart is Empty</h3></c:if>
 		<h4>Grand Total : ${grandTotal }</h4> 
 		<c:if test="${!empty(cartItems) }">
-		<a class="btn btn-success" href="<c:url value='/cart/getshippingaddressform'></c:url>">Place Order</a>
+		<a class="btn btn-success" href="<c:url value='/cart/getshippingaddress'></c:url>">Place Order</a>
 		</c:if>
 	</div>
 </body>
